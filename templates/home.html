@@ -1,0 +1,44 @@
+{% extends "bootstrap/base.html" %}
+{% block title %}Weather Application{% endblock %}
+{% block styles %}
+{{super()}}
+<link rel="stylesheet" href="{{url_for('static', filename='mystyle.css')}}">
+{% endblock %}
+
+{% block content %}
+<div class="container text-center">
+    <form action="" method="POST" class="">
+        <div class="adiv">
+            <h1 class="">Enter Indian City Pin-Code</h1>
+        </div>
+        <div class="bdiv">
+            <input class="" type="text" name="zipcode" />
+            <input type="submit" class="" />
+        </div>
+    </form>
+    <div class="maindiv">
+        <div class="response">
+            <h3>{{response.name}}</h3>
+            {% if response.main %}
+            <h2>{{response.main.temp}}kelvin</h2>
+            ------------------------------------
+            <h4>{{response.weather.0.description}}</h4>
+            {% endif %}
+        </div>
+        <div class="response1">
+            {% if response.main %}
+            <h3>Feels like : {{response.main.feels_like}}</h3>
+            <h3>Temp min : {{response.main.temp_min}}</h3>
+            <h3>Temp max : {{response.main.temp_max}}</h3>
+            <h3>Humidity : {{response.main.humidity}}</h3>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block scripts %}
+<script src="{{url_for('.static', filename='myscripts.js')}}"></script>
+{{super()}}
+{% endblock %}
